@@ -52,6 +52,23 @@ app.post("/compose",function(req,res){
 
   })
   
+app.get("/posts/:postName",function(req,res){
+   const RequestedTitle= req.params.postName
+  
+   Posts.forEach(function(post){
+    const storedTitle=post.Title;
+    if (storedTitle===RequestedTitle)
+    {
+      console.log("m")
+    }
+
+   })
+
+  if (PostLink===Posts.Title)
+  console.log("m")
+  })
+
+
 
 app.listen(3000, function() 
 {
