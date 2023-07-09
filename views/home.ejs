@@ -1,4 +1,16 @@
+
 <%- include('partials/header'); -%>
-<h1>Hello World</h1>
+
+<h1>Home</h1>
 <p><%=homeStarting%></p>
-<%- include('partials/footer'); -%>
+
+
+
+    <%Posts.forEach(function(post){ %>
+    <%console.log(post.Title)%>
+    <%console.log(post.Text)%>
+    <%})%>
+
+    
+
+<%- include('partials/footer'); -%> 

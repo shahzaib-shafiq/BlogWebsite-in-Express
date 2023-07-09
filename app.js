@@ -18,8 +18,9 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"));
 
 app.get("/",function(req,res){ 
-  res.render('home', {homeStarting:homeStartingContent});    
-console.log(Posts)
+
+  res.render('home', {homeStarting:homeStartingContent,Posts:Posts});    
+  
 })
 
 
@@ -47,6 +48,8 @@ app.post("/compose",function(req,res){
 
   Posts.push(ComposeArea);
   res.redirect("/")
+
+
   })
   
 
