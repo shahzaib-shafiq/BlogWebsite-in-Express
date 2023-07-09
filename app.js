@@ -10,11 +10,12 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express();
 
+
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended:true}))
 
-app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(express.static("public"));
-
 
 app.get("/",function(req,res){ 
   res.render('home', {homeStarting:homeStartingContent});    
@@ -29,10 +30,19 @@ app.get("/contact",function(req,res){
   res.render("contact",{contact:contactContent});
 })
 
+
 app.get("/compose",function(req,res){
   res.render("compose");
+
 })
 
-app.listen(3000, function() {
+app.post("/compose",function(req,res){
+  var value=req.body.compose;
+  console.log(value)
+  })
+  
+
+app.listen(3000, function() 
+{
   console.log("Server started on port 3000");
 });
