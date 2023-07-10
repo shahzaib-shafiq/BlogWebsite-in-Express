@@ -10,11 +10,13 @@
 
      <h2><%=post.Title%></h2>
 
-    
-
-     <span>
-          <p class="text single-line"><%=post.Text%></p>
-          <a href="">Read More</a>
+         <span>
+          <p class="text single-line">
+               <%=post.Text%>
+               <a href="/posts/<%=post.Title%>"">Read More</a>
+               
+          </p>
+          
      </span>
     <%})%>
 
