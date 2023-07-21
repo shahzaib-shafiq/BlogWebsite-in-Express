@@ -1,30 +1,19 @@
-
 <%- include("partials/header"); -%>
-    <h1>Home</h1>
-    <p> <%= startingContent %> </p>
+<h1>Home</h1>
+<p><%=homeStartingContent%></p>
 
+<% posts.forEach(function (post) { %>
+  <h1><%= post.title %></h1>
+  <p>
+    <%= post.content.substring(0, 100) + " ..." %>
+    <a href="/posts/<%= post.title %>">Read More</a>
+  </p>
 
-  <%  posts.forEach(function(post){ %>
-
-    <h1><%=post.title%></h1>
-    <p>
-    <%=post.content.substring(0, 100) + " ..."%>
-    <a href="/posts/<%=post.title%>">Read More</a>
-    </p>
-
-<<<<<<< HEAD
-=======
-     <h2><%=post.Title%></h2>
-     <p>
-     <%=post.Text.substring(0,100)+" ... " %>
-
-          <a href="/posts/<%=post.Title%>">Read More</a>
- </p>
-  
-    <%})%>
->>>>>>> eac1c2b9605415824764e4fc75a9728588a134a4
-
-    <% }) %>
-
+  <h2><%= post.Title %></h2>
+  <p>
+    <%= post.Text.substring(0, 100) + " ... " %>
+    <a href="/posts/<%= post.Title %>">Read More</a>
+  </p>
+<% }); %>
 
 <%- include("partials/footer"); -%>
