@@ -18,12 +18,27 @@ app.use(express.static("public"));
 
 let posts = [];
 
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/blogsdb');
+const blogSchema={
+  title:String,
+  content:String
+}
+
+const Blog = mongoose.model('Blog', { name: String });
+
+
+
 app.get("/", function(req, res){
   res.render("home", {
     startingContent: homeStartingContent,
     posts: posts
     });
 });
+
+
+
 
 app.get("/about", function(req, res){
   res.render("about", {aboutContent: aboutContent});
