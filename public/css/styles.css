@@ -19,6 +19,12 @@ html {
 .navbar-nav  li a:hover {
     color: #1abc9c !important;
 }
+.truncate {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
 .footer-padding {
 	padding-bottom: 60px;
