@@ -22,25 +22,45 @@ let posts = [];
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/blogsdb');
 const blogSchema={
-  title:String,
-  content:String
+  Title:String,
+  Content:String
 }
 
-const Blog = mongoose.model('Blog', { name: String });
+const Blog = mongoose.model('Blog', blogSchema);
+
+// Asynchronous function to find all items in the database
+async function findItemsInDB() {
+  try {
+    const foundItems = await Blog.find({});
+
+    return foundItems;
+  } catch (err) {
+    console.error("Error:", err.message);
+    // You might choose to rethrow the error or handle it differently based on your use case.
+    throw err;
+  }
+}
+
 
 
 
 app.get("/", function(req, res){
+  
+
+
   res.render("home", {
-    startingContent: homeStartingContent,
-    posts: posts
-    });
-});
+      startingContent: homeStartingContent,
+      posts: posts
+      });
+
+
+  });
 
 
 
 
 app.get("/about", function(req, res){
+  
   res.render("about", {aboutContent: aboutContent});
 });
 
@@ -60,9 +80,17 @@ app.post("/compose", function(req, res){
 
   posts.push(post);
 
+  const newBlog=Blog({
+    Title:req.body.postTitle,
+    Content:req.body.postBody 
+   })
+   newBlog.save();
+ 
   res.redirect("/");
 
 });
+
+
 
 app.get("/posts/:postName", function(req, res){
   const requestedTitle = _.lowerCase(req.params.postName);
